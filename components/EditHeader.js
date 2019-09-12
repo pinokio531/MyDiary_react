@@ -5,7 +5,7 @@ import {View,TouchableOpacity,StyleSheet} from 'react-native'
 import {withNavigation} from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons';
 
-const EditHeader = ({navigation}) => {
+const EditHeader = ({navigation, addPost}) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity
@@ -23,7 +23,11 @@ const EditHeader = ({navigation}) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    hitSlop={{top:2, bottom:2, left:2, right: 2}}>
+                    hitSlop={{top:2, bottom:2, left:2, right: 2}}
+                    onPress={() => {
+                        addPost();
+                        navigation.navigate('ListScreen');
+                    }}>
                     <Ionicons name="ios-save" size={25} color={'#7a7171'}></Ionicons>
                 </TouchableOpacity>
             </View>

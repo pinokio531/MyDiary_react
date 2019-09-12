@@ -8,26 +8,32 @@ import {TextInput
     ,Image } from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import EditHeader from '../components/EditHeader'
+import { setRecoveryProps } from 'expo/build/ErrorRecovery/ErrorRecovery';
 
 const {width, height} = Dimensions.get('window');
 
-export default EditScreen = () => {
+export default EditScreen = (props) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.contentContainer}>
                 <View style={styles.emptyBox}/>
-                <EditHeader/>
+                <EditHeader
+                addPost = {props.screenProps.addPost}/>
                 <View style={styles.emptyBox}/>
                 <TextInput
+                value = {props.screenProps.title}
                     placeholder="제목을 입력하세요 :)"
                     style={styles.title}
-                    returnKeyType="done"/>
+                    returnKeyType="done"
+                    onChangeText={props.screenProps.changeTitle}/>
                 <View style={styles.emptyBox}/>
                 <TextInput
+                    value = {props.screenProps.Content}
                     placeholder="본문!"
                     multiline={true}
                     style={styles.content}
-                    returnKeyType="done"/>
+                    returnKeyType="done"
+                    onChangeContent = {props.screenProps.changeContent}/>
             </View>
         </SafeAreaView>
     );
