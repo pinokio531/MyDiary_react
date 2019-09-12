@@ -18,7 +18,8 @@ const EditHeader = ({navigation, addPost}) => {
             <View style={styles.iconContainer}>
                 <TouchableOpacity
                     activeOpacity={0.8}
-                    hitSlop={{top:2, bottom:2, left:2, right: 2}}>
+                    hitSlop={{top:2, bottom:2, left:2, right: 2}}
+                    onPress={selectPicture}>
                     <Ionicons name="ios-image" size={25} color={'#7a7171'}></Ionicons>
                 </TouchableOpacity>
                 <TouchableOpacity

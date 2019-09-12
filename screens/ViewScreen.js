@@ -5,7 +5,8 @@ import {
     Text,
     View,
     StyleSheet,
-    Dimensions
+    Dimensions,
+    Image
  } from 'react-native';
 import {SafeAreaView} from 'react-navigation';
 import ViewHeader from '../components/ViewHeader'
@@ -19,13 +20,17 @@ export default ViewScreen = (props) => {
     return (
         <SafeAreaView>
             <View style={styles.contentContainer}>
-                <ViewHeader/>
+                <ViewHeader
+                postId={post.id}
+                deletePost={() => {props.screenProps.deletePost(post.id)}}
+                style={styles.viewHeader}/>
                 {post?
                 <View>
                     <View style={styles.emptyBox}/>
                     <Text style={styles.title}>{post.title}</Text>
                     <View style={styles.emptyBox}/>
                     <Text style={styles.content}>{post.content}</Text>
+                    {post.image?<Image source={{uri: post.image}} style={{width:100,height:100}}/>:null}
                 </View>
                 :null}
             </View>

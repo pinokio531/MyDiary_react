@@ -113,6 +113,26 @@ export default class App extends React.Component {
     this.setState({Posts:prevPosts});
   }
 
+  componentDidMount(){
+    const today = this._getToday();
+    AsyncStorage.getItem('@diary:state')
+    .then((state)=> {
+      if(state != null){
+          this.setState(JSON.parse(state));
+      }
+    }).then(() => {
+      this.setState({
+        selectedDate: today
+      })
+    });
+  }
+  
+  
+  saveData = () => {
+    AsyncStorage.setItem('@diary:state',JSON.stringify(this.state));
+  }
+  
+
   render(){
     return(
       <Navigation
@@ -129,6 +149,7 @@ export default class App extends React.Component {
         addPost : this._addPost,
         imageUrl: this.state.imageUrl,
         selectPicture: this._selectPicture,
+        deletePost:this._deletePost,
       }}
       />
     )
