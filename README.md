@@ -13,3 +13,8 @@ npm start
 ````````````````````````
 npm install --save react-navigation react-native-gesture-handler
 ````````````````````````
+
+# 캘린더 설치
+````````````````````````
+npm install moment react-native-calendar-picker --save
+````````````````````````
